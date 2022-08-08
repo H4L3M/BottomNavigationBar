@@ -40,9 +40,9 @@ fun NavApp() {
             Column(modifier = Modifier.padding(paddingValues = paddingValues)) {
 
                 NavHost(navController = navController, startDestination = Screen.HomeScreen.route) {
-                    composable(route = Screen.HomeScreen.route) { HomeScreen() }
-                    composable(route = Screen.FavoriteScreen.route) { FavoriteScreen() }
-                    composable(route = Screen.SearchScreen.route) { SearchScreen() }
+                    screens.forEach { screen ->
+                        composable(route = screen.route) { screen.content.invoke()}
+                    }
                 }
 
             }
